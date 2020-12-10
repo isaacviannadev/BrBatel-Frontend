@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { FiAlertCircle, FiCheckCircle, FiInfo, FiXCircle } from "react-icons/fi";
-import { clearTimeout } from "timers";
 
 import { ToastMessages, useToast } from "../../../hooks/Toast";
 
