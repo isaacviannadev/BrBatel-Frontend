@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
 
   span {
-    width:160px;
+    width: 160px;
     background: #ff9000;
     padding: 8px;
     border-radius: 4px;
@@ -34,8 +34,7 @@ export const Container = styled.div`
   }
 
   &:hover span {
-    opacity:1;
+    opacity: 1;
     visibility: visible;
-
   }
 `;
