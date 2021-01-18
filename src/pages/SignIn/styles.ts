@@ -41,6 +41,10 @@ export const AnimationContainer = styled.div`
 
   animation: ${appearFromLeft} 1s;
 
+  img {
+    width: 360px;
+  }
+
   form {
     margin: 90px 0;
     width: 340px;
@@ -51,20 +55,20 @@ export const AnimationContainer = styled.div`
     }
 
     a {
-      color: #f4ede8;
+      color: #39a892;
       display: block;
       margin-top: 24px;
       text-decoration: none;
       transition: color 0.2s;
 
       &:hover {
-        color: ${shade(0.2, "#f4ede8")};
+        color: ${shade(0.2, "#39a892")};
       }
     }
   }
 
   > a {
-    color: #ff9000;
+    color: #39a892;
     display: block;
     text-decoration: none;
     transition: color 0.2s;
@@ -77,13 +81,14 @@ export const AnimationContainer = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, "#ff9000")};
+      color: ${shade(0.2, "#39a892")};
     }
   }
 `;
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${SignInBg}) no-repeat;
+  background: url(${SignInBg}) no-repeat center;
   background-size: cover;
+  opacity: 0.6;
 `;
