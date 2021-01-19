@@ -1,108 +1,98 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form } from "@unform/web";
+import { useHistory } from "react-router-dom";
+
 import {
   FiFileMinus,
   FiFileText,
   FiPackage,
   FiShoppingBag,
   FiTag,
-  FiEdit2,
 } from "react-icons/fi";
+
+import api from "../../services/api";
+import crateImg from "../../assets/crate.svg";
 
 import Input from "../../components/input";
 import SideMenu from "../../components/sidebar";
 import Button from "../../components/button";
 
-import api from "../../services/api";
-import { Container, Content, ItemInfo, ListItems } from "./styles";
-import { Link } from "react-router-dom";
-
-interface Item {
-  id: string;
-  itemName: string;
-  amountCurrent: number;
-  amountMinimum: number;
-  priceCost: string;
-  priceSell: string;
-  image: string;
-}
+import { Container, Content } from "./styles";
 
 const Register: React.FC = () => {
-  const [item, setItem] = useState<Item[]>([]);
+  const history = useHistory();
 
-  console.log(item);
+  const [iName, setiMame] = useState("");
+  const [aCur, setaCur] = useState("");
+  const [aMin, setaMin] = useState("");
+  const [pCost, setpCost] = useState("");
+  const [pSell, setpSell] = useState("");
 
-  useEffect(() => {
-    api.get("register").then((res) => {
-      setItem(res.data);
-    });
-  }, []);
+  async function handleSubmit() {
+    const data = {
+      itemName: iName,
+      amountCurrent: aCur,
+      amountMinimum: aMin,
+      priceCost: pCost,
+      priceSell: pSell,
+    };
+
+    console.log(data);
+    await api.post("register", data);
+
+    alert("Item Cadastrado com SUcesso!");
+
+    history.push("/dashboard");
+  }
 
   return (
     <>
       <Container>
         <SideMenu />
         <Content>
-          <ListItems>
-          <h1> Cadastrar Item</h1>
-          <p>Preencha os campos abaixo para cadastrar um novo item</p>
-            {item.map((item) => {
-              return (
-                <ItemInfo>
-                  <header>
-                    <img src={item.image} alt="LukeShop" />
-                    <div>
-                      <strong>{item.itemName}</strong>
-                    </div>
-                    <Link to={`/register/item/${item.id}`}>
-                      <FiEdit2 />
-                    </Link>
-                  </header>
-                  <ul>
-                    <li>
-                      <span>Qtd. Atual</span>
-                      <strong>{item.amountCurrent}</strong>
-                    </li>
-                    <li>
-                      <span>Qtd Min</span>
-                      <strong>{item.amountMinimum}</strong>
-                    </li>
-                    <li>
-                      <span>Preço Custo</span>
-                      <strong>{item.priceCost}</strong>
-                    </li>
-                    <li>
-                      <span>Preço Revenda</span>
-                      <strong>{item.priceSell}</strong>
-                    </li>
-                  </ul>
-                </ItemInfo>
-              );
-            })}
-          </ListItems>
-          <Form ref={() => {}} onSubmit={() => {}}>
+          <img src={crateImg} alt="AddItem" />
+
+          <Form onSubmit={handleSubmit}>
             <h1>Qual item quer cadastrar?</h1>
 
             <Input
               name="itemName"
               icon={FiPackage}
               placeholder="Nome do Item"
+              value={iName}
+              onChange={(e) => setiMame(e.target.value)}
             />
             <Input
+              type="number"
+              min="0"
               name="amountCurrent"
               icon={FiFileText}
               placeholder="Quantidade Atual"
+              value={aCur}
+              onChange={(e) => setaCur(e.target.value)}
             />
             <Input
+              type="number"
+              min="0"
               name="amountMinimum"
               icon={FiFileMinus}
               placeholder="Quantidade Mínima"
+              value={aMin}
+              onChange={(e) => setaMin(e.target.value)}
             />
-            <Input name="priceCost" icon={FiTag} placeholder="$ Custo" />
+            <Input
+              name="priceCost"
+              icon={FiTag}
+              placeholder="$ Custo"
+              value={pCost}
+              onChange={(e) => setpCost(e.target.value)}
+            />
             <Input
               name="priceSell"
               icon={FiShoppingBag}
               placeholder="$ Revenda"
+              value={pSell}
+              onChange={(e) => setpSell(e.target.value)}
             />
 
             <Button type="submit">Cadastrar</Button>

@@ -38,3 +38,26 @@ export const Sidebar = styled.nav`
     }
   }
 `;
+
+export const Logout = styled.div`
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  border-radius: 10px;
+  border: 1px dashed #e04848;
+  background: transparent;
+
+  color: #e04848;
+
+  cursor: pointer;
+
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #a43d3d;
+    color: #fff;
+    background: #a43d3d;
+  }
+`;

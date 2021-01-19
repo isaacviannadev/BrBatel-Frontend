@@ -2,21 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button";
 
-import { Sidebar } from "./style";
+import { Sidebar, Logout } from "./style";
 
 import imgLogo from "../../assets/logo.png";
 import { FiArrowLeft } from "react-icons/fi";
+import { useAuth } from "../../hooks/auth";
+
 
 function SideMenu() {
+  const { signOut } = useAuth();
+
   return (
     <Sidebar>
       <img src={imgLogo} alt="LukeShop" />
+      <Logout onClick={signOut} > Sair</Logout>
       <aside className="app-sidebar">
         <div>
           <h2>Selecione a opção desejada:</h2>
 
           <Link to="/register">
-            <Button type="button">Cadastrar Item</Button>
+            <Button type="button">Cadastrar</Button>
           </Link>
         </div>
       </aside>

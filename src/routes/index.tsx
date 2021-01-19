@@ -16,7 +16,7 @@ const Routes: React.FC = () => (
     <Route path="/signup" component={SignUp} />
 
     <Route path="/dashboard" component={Dashboard} isPrivate/>
-    <Route path="/register" component={Register} isPrivate/>
+    <Route path="/register" component={Register} isPrivate />
   </Switch>
 );
 
