@@ -5,7 +5,7 @@
 Sistema de controle de items no estoque do cliente Luke, acessível  apenas através de login, mostra um dashboard onde lista todos os itens cadastrados no banco de dados, podendo editar as informações, excluir items e cadastrar novos items.
 
 
-<img src="https://drive.google.com/file/d/1Gidb7EDsxpZcZdAVfCktFHrhcGWrrToO/view?usp=sharing" width=900px alt="Lukeshop">
+<img src="https://raw.githubusercontent.com/isaacviannadev/BrBatel-Frontend/main/src/assets/lukeshop.gif" width=900px alt="Lukeshop">
 
 ---
 
