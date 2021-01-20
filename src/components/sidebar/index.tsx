@@ -2,20 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button";
 
-import { Sidebar, Logout } from "./style";
+import { Sidebar, Logout, User } from "./style";
 
 import imgLogo from "../../assets/logo.png";
-import { FiArrowLeft } from "react-icons/fi";
+import userIMG from "../../assets/user.svg";
+
+import { FiArrowLeft, FiPower } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
 
 
 function SideMenu() {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   return (
     <Sidebar>
       <img src={imgLogo} alt="LukeShop" />
-      <Logout onClick={signOut} > Sair</Logout>
+      <User>
+      <img src={userIMG} alt="avatar" />
+      <div>
+        <span>Bem vindo,</span>
+        <strong>{user.name}</strong>
+      </div>
+
+      </User>
+      <Logout onClick={signOut} >
+         <FiPower />
+         Sair
+         </Logout>
       <aside className="app-sidebar">
         <div>
           <h2>Selecione a opção desejada:</h2>

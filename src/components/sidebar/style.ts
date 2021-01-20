@@ -1,3 +1,4 @@
+import { shade } from "polished";
 import styled from "styled-components";
 
 export const Sidebar = styled.nav`
@@ -39,15 +40,57 @@ export const Sidebar = styled.nav`
   }
 `;
 
+export const User = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 30px;
+  background-color: #69f3cd;
+  border-radius: 2px 10px 10px 10px ;
+
+
+  transition: all 0.3s;
+
+  img {
+    width: 56px;
+    height: 56px;
+
+    border-radius: 50%;
+    border: 2px #2cc769 solid;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    margin-left: -10px;
+    line-height: 15px;
+
+    span {
+      color: #2cc769;
+      font-size: 10px;
+    }
+    strong {
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+
+  &:hover {
+    background-color: ${shade(0.2, "#266f5f")};
+  }
+`;
+
 export const Logout = styled.div`
   margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
+  width: 70px;
   border-radius: 10px;
-  border: 1px dashed #e04848;
+  border: 1px solid #fae2e2;
   background: transparent;
+  font-size: 12px;
 
   color: #e04848;
 
@@ -59,5 +102,10 @@ export const Logout = styled.div`
     border-color: #a43d3d;
     color: #fff;
     background: #a43d3d;
+  }
+
+  svg {
+    margin: 6px;
+    margin-left: 0;
   }
 `;

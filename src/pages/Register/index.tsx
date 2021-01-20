@@ -18,8 +18,11 @@ import SideMenu from "../../components/sidebar";
 import Button from "../../components/button";
 
 import { Container, Content } from "./styles";
+import { useToast } from "../../hooks/Toast";
 
 const Register: React.FC = () => {
+  const { addToast } = useToast();
+
   const history = useHistory();
 
   const [iName, setiMame] = useState("");
@@ -37,10 +40,15 @@ const Register: React.FC = () => {
       priceSell: pSell,
     };
 
+
     console.log(data);
     await api.post("register", data);
 
-    alert("Item Cadastrado com SUcesso!");
+    addToast({
+      type: "success",
+      title: "Item Cadastrado!",
+      description: `${data.itemName} adicionado com sucesso`,
+    });
 
     history.push("/dashboard");
   }
