@@ -13,6 +13,7 @@ import api from "../../services/api";
 import { useToast } from "../../hooks/Toast";
 import { Container, Content, ItemInfo, ListItems } from "./styles";
 import ModalEditItem from "../../components/editModal";
+import Currency from "../../utils/currency";
 
 interface Item {
   id: string;
@@ -99,43 +100,42 @@ const Dashboard: React.FC = () => {
         `/register/item/${item.id}`,
         {
           addAmount: Number(item.amountCurrent) - 1,
-        },
+        }
       );
 
       if (item.amountCurrent - 1 === 0) {
         addToast({
-          type: 'info',
-          title: 'Atenção',
-          description: 'Produto sem estoque',
+          type: "info",
+          title: "Atenção",
+          description: "Produto sem estoque",
         });
       }
 
       if (item.amountCurrent - 1 === item.amountMinimum) {
         addToast({
-          type: 'info',
-          title: 'Atenção',
-          description: 'Seu produto está com a quantidade mínima',
+          type: "info",
+          title: "Atenção",
+          description: "Seu produto está com a quantidade mínima",
         });
       }
 
       if (item.amountCurrent !== 0) {
         const findIndexItem = items.findIndex(
-          item => item.id === responseData.id,
+          (item) => item.id === responseData.id
         );
         if (findIndexItem >= 0) {
           const newItems = items.fill(
             responseData,
             findIndexItem,
-            findIndexItem + 1,
+            findIndexItem + 1
           );
           setItems([...newItems]);
         }
       }
-
     } catch (error) {
       addToast({
-        type: 'error',
-        title: 'Erro',
+        type: "error",
+        title: "Erro",
         description: error.response.data.error,
       });
     }
@@ -147,17 +147,17 @@ const Dashboard: React.FC = () => {
         `register/item/${item.id}`,
         {
           addAmount: Number(item.amountCurrent) + 1,
-        },
+        }
       );
 
       const findIndexItem = items.findIndex(
-        item => item.id === responseData.id,
+        (item) => item.id === responseData.id
       );
       if (findIndexItem >= 0) {
         const newItem = items.fill(
           responseData,
           findIndexItem,
-          findIndexItem + 1,
+          findIndexItem + 1
         );
         setItems([...newItem]);
       }
@@ -178,8 +178,6 @@ const Dashboard: React.FC = () => {
           <h1> Estoque </h1>
           <p>Esses são todos os seus itens</p>
           {items.map((item) => {
-
-
             return (
               <ItemInfo>
                 <header>
@@ -218,9 +216,17 @@ const Dashboard: React.FC = () => {
                   >
                     <span>Qtd. Atual</span>
                     <strong>
-                      <FiMinusCircle onClick={() => {handleSubOne(item)}}/>
+                      <FiMinusCircle
+                        onClick={() => {
+                          handleSubOne(item);
+                        }}
+                      />
                       {item.amountCurrent}
-                      <FiPlusCircle onClick={() => {handleAddOne(item)}} />
+                      <FiPlusCircle
+                        onClick={() => {
+                          handleAddOne(item);
+                        }}
+                      />
                     </strong>
                   </li>
                   <li>
@@ -229,11 +235,17 @@ const Dashboard: React.FC = () => {
                   </li>
                   <li>
                     <span>Preço Custo</span>
-                    <strong>{item.priceCost}</strong>
+                    <strong>
+                      {" "}
+                      {Currency(Number(item.priceCost), "BRL", "pt-BR")}
+                    </strong>
                   </li>
                   <li>
                     <span>Preço Revenda</span>
-                    <strong>{item.priceSell}</strong>
+                    <strong>
+                      {" "}
+                      {Currency(Number(item.priceSell), "BRL", "pt-BR")}
+                    </strong>
                   </li>
                 </ul>
               </ItemInfo>

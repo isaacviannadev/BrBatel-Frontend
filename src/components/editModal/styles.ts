@@ -14,6 +14,7 @@ export const Form = styled(Unform)`
   padding: 38px 30px;
   display: flex;
   flex-direction: column;
+
   @media (max-width: 800px) {
     padding: 6px;
   }

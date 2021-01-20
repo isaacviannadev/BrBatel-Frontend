@@ -31,6 +31,7 @@ interface ItemData {
   amountMinimum: number;
   priceCost: string;
   priceSell: string;
+  image: string;
 }
 
 interface ModalProps {
