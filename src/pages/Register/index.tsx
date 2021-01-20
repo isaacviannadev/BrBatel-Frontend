@@ -40,7 +40,6 @@ const Register: React.FC = () => {
       priceSell: pSell,
     };
 
-
     console.log(data);
     await api.post("register", data);
 

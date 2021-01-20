@@ -66,7 +66,7 @@ const ModalEditItem: React.FC<ModalProps> = ({
 
         <div>
           <Label>Nome do Item</Label>
-          <Input name="itemName" />
+          <Input name="itemName" readOnly/>
         </div>
 
         <GroupInputs>
@@ -92,9 +92,9 @@ const ModalEditItem: React.FC<ModalProps> = ({
         </GroupInputs>
 
         <Button>
-          <button type="submit">
+          <button>
             <FiSave size={24} />
-            <p className="text">Salvar</p>
+            <p>Salvar</p>
           </button>
         </Button>
       </Form>
