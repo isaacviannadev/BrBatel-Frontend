@@ -10,15 +10,25 @@ import Dashboard from '../pages/Dashboard';
 import Register from '../pages/Register';
 
 
+// const Routes: React.FC = () => (
+//   <Switch>
+//     <Route path="/" exact component={SignIn} />
+//     <Route path="/signup" component={SignUp} />
+
+//     <Route path="/dashboard" component={Dashboard} isPrivate/>
+//     <Route path="/register" component={Register} isPrivate />
+//     <Route path="/register/item/:id" component={Register} isPrivate />
+//   </Switch>
+// );
+
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={SignIn} />
+    <Route path="/SignIn" exact component={SignIn} />
     <Route path="/signup" component={SignUp} />
 
-    <Route path="/dashboard" component={Dashboard} isPrivate/>
+    <Route path="/" component={Dashboard} />
     <Route path="/register" component={Register} isPrivate />
     <Route path="/register/item/:id" component={Register} isPrivate />
   </Switch>
 );
-
 export default Routes;

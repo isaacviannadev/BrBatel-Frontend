@@ -38,6 +38,36 @@ export const Sidebar = styled.nav`
       }
     }
   }
+
+  a.login {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    border-radius: 10px;
+    border: 1px solid #f2fae2;
+    background: transparent;
+    font-size: 12px;
+    text-decoration: none;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: #008000;
+      color: #fff;
+      background: #008040;
+    }
+
+    svg {
+      margin: 6px;
+      margin-left: 0;
+    }
+  }
 `;
 
 export const User = styled.div`
@@ -47,8 +77,7 @@ export const User = styled.div`
 
   margin-top: 30px;
   background-color: #69f3cd;
-  border-radius: 2px 10px 10px 10px ;
-
+  border-radius: 2px 10px 10px 10px;
 
   transition: all 0.3s;
 
@@ -82,7 +111,7 @@ export const User = styled.div`
 `;
 
 export const Logout = styled.div`
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;

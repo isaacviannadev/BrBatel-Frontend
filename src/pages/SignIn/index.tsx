@@ -51,7 +51,13 @@ const SignIn: React.FC = () => {
           password: data.password,
         });
 
-        history.push('/dashboard');
+        history.push('/');
+
+        addToast({
+          type: "success",
+          title: "Bem Vindx!",
+          description: "Bem Vindo ao Studio Cleo Fernandes - Pilates e Café",
+        });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -92,10 +98,10 @@ const SignIn: React.FC = () => {
 
           </Form>
 
-          <Link to="/signup">
+          {/* <Link to="/signup">
             <FiLogIn />
             Criar conta
-          </Link>
+          </Link> */}
         </AnimationContainer>
       </Content>
 
